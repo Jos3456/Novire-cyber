@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CurrentYear from "./current-year";
 
 export default function SiteFooter() {
   return (
@@ -32,7 +33,7 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Novire Internet Cyber Cafe. All rights reserved.</p>
+        <p>© <CurrentYear /> Novire Internet Cyber Cafe. All rights reserved.</p>
         <Link href="/">Back to home ↑</Link>
       </div>
     </footer>
