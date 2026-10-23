@@ -5,11 +5,36 @@ import SiteHeader from "../components/site-header";
 import SiteFooter from "../components/site-footer";
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setStatus("sending");
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setStatus("error");
+      return;
+    }
+
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...data, access_key: accessKey }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        setStatus("error");
+        return;
+      }
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -20,15 +45,17 @@ export default function ContactPage() {
         <div className="contact-layout">
           <div className="contact-panel">
             <h2>Send Us a Message</h2>
-            <p style={{ color: "#68758a", lineHeight: 1.7, fontSize: 14 }}>Complete the form below. Email delivery is not connected yet, so please use the phone, WhatsApp or email details on this page for a message that needs to reach us today.</p>
+            <p style={{ color: "#68758a", lineHeight: 1.7, fontSize: 14 }}>Fill in the form and your message will be sent to our email inbox. We will get back to you as soon as we can.</p>
             <form className="contact-form" onSubmit={handleSubmit}>
+              <input type="hidden" name="subject" value="New message from the Novire Cyber website" />
               <label className="form-field">Your name<input name="name" type="text" placeholder="e.g. Jane Wanjiku" autoComplete="name" required /></label>
               <label className="form-field">Email address<input name="email" type="email" placeholder="you@example.com" autoComplete="email" required /></label>
               <label className="form-field">Phone number (optional)<input name="phone" type="tel" placeholder="e.g. 07xx xxx xxx" autoComplete="tel" /></label>
               <label className="form-field">Service you are interested in<select name="service" defaultValue=""><option value="">Choose a service (optional)</option><option>Cyber Café &amp; Document Services</option><option>IT Support &amp; Computer Services</option><option>Graphic Design &amp; Digital Media</option><option>Web Development &amp; Design</option><option>Cybersecurity Services</option><option>Networking &amp; Cloud Services</option><option>IT &amp; Digital Skills Training</option><option>Other / Not sure yet</option></select></label>
               <label className="form-field">How can we help?<textarea name="message" placeholder="Tell us a little about what you need..." required /></label>
-              <button className="primary-button" type="submit">Preview Submission</button>
-              {submitted && <p className="form-notice" role="status">The form is currently a visual prototype and has not sent your message. Please contact Novire by phone, WhatsApp or email for now. We will connect this form to email next.</p>}
+              <button className="primary-button" type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending..." : "Send Message"}</button>
+              {status === "success" && <p className="form-notice" role="status">Thank you! Your message has been sent. Novire will get back to you as soon as possible.</p>}
+              {status === "error" && <p className="form-notice" role="alert">Sorry, your message could not be sent. Please try again or contact Novire by phone, WhatsApp or email. Check that the Web3Forms access key is configured in .env.local.</p>}
             </form>
           </div>
           <aside className="contact-panel">
