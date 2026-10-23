@@ -1120,3 +1120,65 @@ h1 span { color: #1684B8; }
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Follow-up polish: stronger glass, softer buttons, and fixed ambient colour */
+.navbar {
+  background: rgba(248, 250, 252, 0.58);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-color: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 6px 28px rgba(24, 61, 99, 0.08);
+}
+
+.nav-button,
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 20px;
+}
+
+.nav-button,
+.primary-button {
+  border: 0;
+}
+
+.secondary-button {
+  border: 0;
+}
+
+.light-button,
+.contact-outline {
+  border: 0;
+}
+
+/* Fixed atmospheric accents stay in place while the page scrolls. */
+html {
+  background: var(--bg);
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at top left, rgba(86, 200, 232, 0.24) 0%, rgba(86, 200, 232, 0.10) 22%, transparent 46%),
+    radial-gradient(ellipse at 38% 17%, rgba(74, 144, 217, 0.15) 0%, rgba(74, 144, 217, 0.07) 20%, transparent 43%),
+    radial-gradient(ellipse at bottom right, rgba(27, 140, 131, 0.17) 0%, rgba(86, 200, 232, 0.08) 23%, transparent 47%),
+    var(--bg);
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+  }
+}
