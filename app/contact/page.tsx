@@ -44,7 +44,7 @@ export default function ContactPage() {
       <section className="section">
         <div className="contact-layout">
           <div className="contact-panel">
-            <h2>Send Us a Message</h2>
+            <h2>Send a Message</h2>
             <p style={{ color: "#68758a", lineHeight: 1.7, fontSize: 14 }}>Fill in the form and your message will be sent to our email inbox. We will get back to you as soon as we can.</p>
             <form className="contact-form" onSubmit={handleSubmit}>
               <input type="hidden" name="subject" value="New message from the Novire Cyber website" />
