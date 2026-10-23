@@ -1182,3 +1182,9 @@ body::before {
     -webkit-backdrop-filter: blur(28px);
   }
 }
+
+
+/* Keep the contact call-to-action heading readable on its dark background. */
+.contact-section .contact-inner h2 {
+  color: #fff;
+}
