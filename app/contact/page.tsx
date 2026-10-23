@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import SiteHeader from "../components/site-header";
 import SiteFooter from "../components/site-footer";
 
 export default function ContactPage() {
-  const searchParams = useSearchParams();
-  const requestedService = searchParams.get("service") ?? "";
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
   }
@@ -28,7 +25,7 @@ export default function ContactPage() {
               <label className="form-field">Your name<input name="name" type="text" placeholder="e.g. Jane Wanjiku" autoComplete="name" required /></label>
               <label className="form-field">Email address<input name="email" type="email" placeholder="you@example.com" autoComplete="email" required /></label>
               <label className="form-field">Phone number (optional)<input name="phone" type="tel" placeholder="e.g. 07xx xxx xxx" autoComplete="tel" /></label>
-              <label className="form-field">Service you are interested in<select name="service" defaultValue={requestedService}><option value="">Choose a service (optional)</option><option>Cyber Café &amp; Document Services</option><option>IT Support &amp; Computer Services</option><option>Graphic Design &amp; Digital Media</option><option>Web Development &amp; Design</option><option>Cybersecurity Services</option><option>Networking &amp; Cloud Services</option><option>IT &amp; Digital Skills Training</option><option>Other / Not sure yet</option></select></label>
+              <label className="form-field">Service you are interested in<select name="service" defaultValue=""><option value="">Choose a service (optional)</option><option>Cyber Café &amp; Document Services</option><option>IT Support &amp; Computer Services</option><option>Graphic Design &amp; Digital Media</option><option>Web Development &amp; Design</option><option>Cybersecurity Services</option><option>Networking &amp; Cloud Services</option><option>IT &amp; Digital Skills Training</option><option>Other / Not sure yet</option></select></label>
               <label className="form-field">How can we help?<textarea name="message" placeholder="Tell us a little about what you need..." required /></label>
               <button className="primary-button" type="submit">Preview Submission</button>
               {submitted && <p className="form-notice" role="status">The form is currently a visual prototype and has not sent your message. Please contact Novire by phone, WhatsApp or email for now. We will connect this form to email next.</p>}
