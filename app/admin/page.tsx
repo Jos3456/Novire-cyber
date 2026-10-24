@@ -346,7 +346,7 @@ export default function AdminPage() {
         )}
 
         <footer style={{ color: "#8996aa", fontSize: "12px", marginTop: "35px", paddingBottom: "15px" }}>
-          © {new Date().getFullYear()} Novire Internet Cyber Cafe · Admin workspace
+          © 2026 Novire Internet Cyber Cafe · Admin workspacess
         </footer>
       </main>
     </div>
