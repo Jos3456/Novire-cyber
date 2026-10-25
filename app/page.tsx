@@ -24,12 +24,12 @@ export default function Home() {
           </div>
           <div className="hero-points"><span>✓ Friendly Support</span><span>✓ Practical Solutions</span><span>✓ Digital Skills</span></div>
         </div>
-        <div className="hero-visual" aria-hidden="true">
-          <div className="visual-circle">
-            <div className="laptop"><div className="laptop-screen"><span className="screen-dot">● ● ●</span><div className="screen-symbol">N</div><strong>Connect.</strong><strong>Create.</strong><strong>Grow.</strong><div className="screen-line" /><div className="screen-line short" /></div><div className="laptop-base" /></div>
-            <div className="floating-card card-one"><span>🔒</span> Digital Security</div>
-            <div className="floating-card card-two"><span>🌐</span> Web Solutions</div>
-          </div>
+        <div className="hero-visual">
+          <img
+            src="/images/hero-img.jpg"
+            alt="Novire cyber café and digital services"
+            style={{ width: "100%", height: "430px", objectFit: "cover", borderRadius: "24px" }}
+          />
         </div>
       </section>
       <section className="trust-strip">
