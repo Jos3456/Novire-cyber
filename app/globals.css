@@ -1192,3 +1192,63 @@ body::before {
 .visual-circle:hover {
   transform: translateY(-10px);
 }
+
+
+/* Homepage hero: use the supplied photo as the full-section background. */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: min(720px, calc(100vh - 112px));
+  padding: clamp(72px, 10vw, 132px) 9%;
+  background:
+    linear-gradient(90deg, rgba(7, 20, 37, 0.84) 0%, rgba(7, 20, 37, 0.68) 48%, rgba(7, 20, 37, 0.28) 100%),
+    url("/images/hero-img.jpg") center / cover no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.hero .eyebrow {
+  color: #b8e9ff;
+}
+
+.hero h1 {
+  color: #fff;
+}
+
+.hero h1 span {
+  color: #70d6f4;
+}
+
+.hero-content > p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-points {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero .secondary-button {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: 620px;
+    padding: 76px 7%;
+    background-position: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: 590px;
+    padding: 56px 6%;
+  }
+}
