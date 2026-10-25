@@ -24,13 +24,6 @@ export default function Home() {
           </div>
           <div className="hero-points"><span>✓ Friendly Support</span><span>✓ Practical Solutions</span><span>✓ Digital Skills</span></div>
         </div>
-        <div className="hero-visual">
-          <img
-            src="/images/hero-img.jpg"
-            alt="Novire cyber café and digital services"
-            style={{ width: "100%", height: "430px", objectFit: "cover", borderRadius: "24px" }}
-          />
-        </div>
       </section>
       <section className="trust-strip">
         <div><strong>7</strong><span>Service Categories</span></div>
