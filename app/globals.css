@@ -1311,3 +1311,68 @@ body::before {
     transition: none;
   }
 }
+
+
+/* Black-and-white hover treatment for the homepage service cards. */
+.service-card {
+  background-color: rgba(255, 255, 255, 0.58);
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.service-card .service-icon {
+  color: #176FA6;
+  transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  color: #fff;
+  background: #050505;
+  border-color: #050505;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  filter: none;
+  transform: translateY(-3px);
+}
+
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover ul,
+.service-card:hover .text-link,
+.service-card:focus-within h3,
+.service-card:focus-within p,
+.service-card:focus-within ul,
+.service-card:focus-within .text-link {
+  color: #fff;
+}
+
+.service-card:hover .service-icon,
+.service-card:focus-within .service-icon {
+  color: #7be0f4;
+  background: #202020;
+  transform: translateY(-2px);
+}
+
+.service-card:hover .text-link,
+.service-card:focus-within .text-link {
+  text-decoration: underline;
+  text-decoration-color: #7be0f4;
+  text-underline-offset: 4px;
+}
+
+.service-card .service-icon svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card .service-icon {
+    transition: none;
+  }
+}
