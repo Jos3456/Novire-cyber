@@ -1252,3 +1252,37 @@ body::before {
     padding: 56px 6%;
   }
 }
+
+
+/* Let the homepage hero begin behind the floating glass navbar. */
+.site-shell {
+  padding-top: 0;
+}
+
+.hero {
+  margin-top: 0;
+  padding-top: clamp(170px, 19vw, 220px);
+  min-height: min(820px, 100vh);
+}
+
+@media (max-width: 800px) {
+  .site-shell {
+    padding-top: 0;
+  }
+
+  .hero {
+    padding-top: 190px;
+    min-height: 760px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-shell {
+    padding-top: 0;
+  }
+
+  .hero {
+    padding-top: 215px;
+    min-height: 790px;
+  }
+}
